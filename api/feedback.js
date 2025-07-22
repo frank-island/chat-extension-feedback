@@ -38,11 +38,8 @@ export default async function handler(req, res) {
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log('Nodemailer response:', info);
-    console.log('Feedback email sent:', { message, email });
     res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Error sending feedback email:', error);
     res.status(500).json({ error: 'Failed to send feedback email.' });
   }
 }
